@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perkenalan Diri dan Materi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .section {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .image-box {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #ccc;
+            margin: 10px;
+            display: inline-block;
+            background-color: #f9f9f9;
+            position: relative;
+        }
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .image-box input[type="file"] {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            opacity: 0.7;
+        }
+        .details {
+            margin-top: 10px;
+            text-align: center;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .explanation {
+            margin-top: 20px;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Halaman 1: Perkenalan Diri -->
+    <div id="section1" class="section active">
+        <h1>Perkenalan Diri</h1>
+        <div>
+            <div>
+                <div class="image-box">
+                    <img id="img1" src="https://uploads.onecompiler.io/444twfgyp/444txc68j/IMG20250926093209.jpg" alt="Gambar 1">
+                </div>
+                <div class="details">
+                    <p>Nama: Riqky Andika</p>
+                    <p>Kelas: 10TKJ1</p>
+                    <p>Absen: 23</p>
+                </div>
+            </div>
+            <div>
+                <div class="image-box">
+                    <img id="img2" src="https://uploads.onecompiler.io/444twfgyp/44dctzbuj/IMG-20260212-WA0047.jpg" alt="Gambar 2">
+                </div>
+                <div class="details">
+                    <p>Nama: Nur Hasya</p>
+                    <p>Kelas: 10TKJ1</p>
+                    <p>Absen: 19</p>
+                </div>
+            </div>
+            <div>
+                <div class="image-box">
+                    <img id="img3" src="https://uploads.onecompiler.io/444twfgyp/444txc68j/IMG_20241210_190727.jpg" alt="Gambar 3">
+                </div>
+                <div class="details">
+                    <p>Nama: Fajar Dwi</p>
+                    <p>Kelas: 10TKJ1</p>
+                    <p>Absen: 11</p>
+                </div>
+            </div>
+        </div>
+        <button onclick="showSection(2)">Next</button>
+    </div>
+
+    <!-- Halaman 2: Hewan Ovovivipar - Kuda Laut -->
+    <div id="section2" class="section">
+        <h1>Hewan Ovovivipar: Kuda Laut</h1>
+        <img src="https://uploads.onecompiler.io/444twfgyp/444twfv8b/Screenshot_2025-10-15-09-09-03-81_680d03679600f7af0b4c700c6b270fe7.jpg" alt="Kuda Laut" style="width: 300px; height: auto;">
+        <div class="explanation">
+            <p>Kuda laut adalah hewan ovovivipar, yang berarti telurnya menetas di dalam tubuh induknya dan anaknya lahir hidup. Kuda laut jantan yang mengandung telur hingga menetas. Mereka hidup di laut dan dikenal dengan bentuk tubuh yang unik seperti kuda.</p>
+        </div>
+        <button onclick="showSection(1)">Back</button>
+        <button onclick="showSection(3)">Next</button>
+    </div>
+
+    <!-- Halaman 3: Mobil Lamborghini -->
+    <div id="section3" class="section">
+        <h1>Mobil Lamborghini</h1>
+        <img src="https://uploads.onecompiler.io/444twfgyp/444ty6344/lamborghini-revuelto-72728.jpg" alt="mobil" style="width: 300px; height: auto;">
+        <div class="explanation">
+            <p>Lamborghini Revuelto adalah supercar hybrid pertama Lamborghini yang menggabungkan mesin V12 6.5L dengan tiga motor listrik, menghasilkan total tenaga sekitar 1.015 hp. Mobil ini memakai sistem AWD, transmisi 8-speed dual-clutch, akselerasi 0–100 km/jam ±2,5 detik, dan kecepatan puncak >350 km/jam. Struktur monofuselage serat karbon membuatnya ringan dan sangat kaku, sementara interiornya bergaya kokpit pesawat tempur dengan desain “Y”. Revuelto memiliki 13 mode berkendara, termasuk mode listrik untuk kota. Harganya sangat eksklusif (internasional >US$600 ribu, di Indonesia bisa >Rp20 miliar). Mobil ini menjadi simbol transisi Lamborghini menuju era elektrifikasi tanpa meninggalkan karakter V12-nya.</p>
+        </div>
+        <button onclick="showSection(2)">Back</button>
+    </div>
+
+    <script>
+        function showSection(sectionNumber) {
+            // Sembunyikan semua section
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            
+            // Tampilkan section yang diminta
+            document.getElementById('section' + sectionNumber).classList.add('active');
+        }
+
+        function loadImage(event, imgId) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById(imgId).src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>
